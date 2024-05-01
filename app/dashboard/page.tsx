@@ -11,7 +11,7 @@ const Dashboard =async () => {
   return (
     <div>
      <h1> Dashboard</h1>
-     <Link href="/">Home</Link>
+     
       </div>
   )
 }
