@@ -2,7 +2,7 @@ import Link from 'next/link'
 import LogoutBtn from './LogoutBtn'
 
 const Logout = async ({ session }: any) => {
-  console.log(session);
+ 
   
   return (
     <>

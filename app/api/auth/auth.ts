@@ -53,7 +53,9 @@ export const {
   secret: process.env.AUTH_SECRET,
   callbacks: {
     async redirect({ url, baseUrl }) {
-      return baseUrl + '/dashboard'
+      
+      return `${baseUrl}/dashboard` 
     },
+    
   },
 })
