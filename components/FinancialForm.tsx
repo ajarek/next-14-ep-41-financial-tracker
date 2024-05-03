@@ -1,7 +1,10 @@
-import React from 'react'
+'use client'
+
+import { useRef } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Label } from '@/components/ui/label'
+import { createRecord } from '@/lib/action'
 import {
   Select,
   SelectContent,
@@ -10,24 +13,17 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-const FinancialForm = () => {
-  
- 
-  
-  const createRecord = async (formData: FormData) => {
-    'use server'
-    const rawFormData = {
-      description: formData.get('description'),
-      amount: formData.get('amount'),
-      category: formData.get('category'),
-      payment: formData.get('payment'),
-     
-    }
-     console.log(rawFormData)
-  }
-
+const FinancialForm =  () => {
+  const ref = useRef<HTMLFormElement>(null)
   return (
-    <form action={createRecord} className='w-full flex flex-col gap-4 '>
+    <form
+    ref={ref}
+    action={async (formData) => {
+      await createRecord(formData)
+      ref.current?.reset()
+    }}
+      className='w-full flex flex-col gap-4 '
+    >
       <div className='flex flex-col gap-4'>
         <Label htmlFor='description'>Description:</Label>
         <Input
@@ -48,7 +44,10 @@ const FinancialForm = () => {
       </div>
       <div className='flex flex-col gap-4'>
         <Label htmlFor='category'>Category:</Label>
-        <Select defaultValue='' name='category'>
+        <Select
+          defaultValue=''
+          name='category'
+        >
           <SelectTrigger className=''>
             <SelectValue placeholder='Select a Category' />
           </SelectTrigger>
@@ -73,10 +72,8 @@ const FinancialForm = () => {
             <SelectItem value='Cash'>Cash</SelectItem>
             <SelectItem value='Salary'>Salary</SelectItem>
             <SelectItem value='Bank Transfer'>Bank Transfer</SelectItem>
-           
           </SelectContent>
         </Select>
-       
       </div>
       <Button
         type='submit'

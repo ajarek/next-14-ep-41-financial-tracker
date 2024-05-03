@@ -7,7 +7,13 @@ export type User = {
   img: string
   isAdmin: boolean
 }
-
+export type Record = {
+  description: string
+  amount: number
+  category: string
+  payment: string
+  userId:string
+}
 
 const userSchema = new mongoose.Schema(
   {
@@ -20,5 +26,16 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
+const recordSchema =new mongoose.Schema({
+  description: { type: String, required: true },
+  amount: { type: Number, required: true },
+  category: { type: String, required: true },
+  payment: { type: String, required: true },
+  userId: { type: String, required: true },
+},
+  { timestamps: true }
+)
+
 
 export const User = mongoose.models?.User || mongoose.model('User', userSchema)
+export const Record = mongoose.models?.Record || mongoose.model('Record', recordSchema)
