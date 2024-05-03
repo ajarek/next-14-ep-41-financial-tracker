@@ -4,20 +4,24 @@ import GitHub from 'next-auth/providers/github'
 import { User } from '@/lib/models'
 import connectToDb from '@/lib/connectToDb'
 import bcrypt from 'bcryptjs'
-
 export const {
   auth,
-
   handlers: { GET, POST },
 } = NextAuth({
   pages: {
     error: '/register',
   },
+  theme: {
+    colorScheme: 'dark', // "auto" | "dark" | "light"
+    brandColor: '#0E78F9', // Hex color code
+    logo: '/images/logo.png', // Absolute URL to image
+    buttonText: '#ffffff', // Hex color code
+  },
 
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
     CredentialsProvider({
       name: 'Credential',
@@ -25,23 +29,17 @@ export const {
         username: { type: 'text', required: true },
         password: { type: 'password', required: true },
       },
-      // @ts-expect-error: next-auth error
-      async authorize(credentials: { username: string; password: string }) {
+      async authorize(credentials: any) {
         await connectToDb()
-
         try {
           const user = await User.findOne({ username: credentials.username })
-
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
               user.password
             )
-
             if (isPasswordCorrect) {
-              return {
-                user,
-              }
+              return user
             }
           }
         } catch (err: any) {
@@ -51,6 +49,7 @@ export const {
     }),
   ],
   secret: process.env.AUTH_SECRET,
+  
   callbacks: {
     async redirect({ url, baseUrl }) {
       

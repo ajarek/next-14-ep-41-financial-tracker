@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import Image from 'next/image'
 
 const DEFAULT_IS_ADMIN: boolean = false
 
@@ -38,10 +39,18 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className='bg-secondary'>
-      <h1 className='text-3xl text-center font-bold my-4'>Register</h1>
+    <div className='bg-[#000] text-white  p-4'>
+      <div className='flex justify-center p-2'>
+        <Image
+          src='/images/logo.png'
+          alt='logo'
+          width={80}
+          height={80}
+          className='w-[60px] h-[60px] '
+        />
+      </div>
       <form
-        className='w-80  flex flex-col gap-4 p-6 shadow-xl border-2 rounded-sm'
+        className='w-80  flex flex-col gap-4 p-6 '
         onSubmit={handleSubmit}
       >
         <Input
@@ -74,13 +83,13 @@ const RegisterForm = () => {
           value={`${DEFAULT_IS_ADMIN}`}
         />
         <Button
-          className=''
+          className='bg-[#0E78F9] hover:bg-[#0E78F9]/90'
           type='submit'
         >
           Register
         </Button>
         <Link href='/api/auth/signin'>
-          Have an account? <b>Login</b>
+          Have an account? <b className='text-[#0E78F9]'>Login</b>
         </Link>
       </form>
     </div>
