@@ -8,11 +8,13 @@ export type User = {
   isAdmin: boolean
 }
 export type Record = {
+  _id: string
   description: string
   amount: number
   category: string
   payment: string
   userId:string
+  createdAt: Date
 }
 
 const userSchema = new mongoose.Schema(

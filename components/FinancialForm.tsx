@@ -13,15 +13,15 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-const FinancialForm =  () => {
+const FinancialForm = () => {
   const ref = useRef<HTMLFormElement>(null)
   return (
     <form
-    ref={ref}
-    action={async (formData) => {
-      await createRecord(formData)
-      ref.current?.reset()
-    }}
+      ref={ref}
+      action={async (formData) => {
+        await createRecord(formData)
+        ref.current?.reset()
+      }}
       className='w-full flex flex-col gap-4 '
     >
       <div className='flex flex-col gap-4'>

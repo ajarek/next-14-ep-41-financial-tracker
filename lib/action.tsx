@@ -38,9 +38,11 @@ export const createRecord = async (formData: FormData) => {
   }
   
   
+  
   try {
     await connectToDb()
     const newRecord = new Record(rawFormData)
+    console.log(newRecord)
     await newRecord.save()
     console.log('saved' + newRecord)
     revalidatePath('/dashboard')

@@ -50,7 +50,7 @@ const RegisterForm = () => {
         />
       </div>
       <form
-        className='w-80  flex flex-col gap-4 p-6 '
+        className='w-80  flex flex-col gap-4 p-6 text-black '
         onSubmit={handleSubmit}
       >
         <Input
@@ -88,7 +88,7 @@ const RegisterForm = () => {
         >
           Register
         </Button>
-        <Link href='/api/auth/signin'>
+        <Link href='/api/auth/signin' className='text-white'>
           Have an account? <b className='text-[#0E78F9]'>Login</b>
         </Link>
       </form>
