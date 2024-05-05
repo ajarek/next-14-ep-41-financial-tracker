@@ -50,3 +50,10 @@ export const createRecord = async (formData: FormData) => {
     console.log(err)
   }
 }
+
+export const deleteItem=(formData: FormData)=>{
+
+}
+export const editItem=(formData: FormData)=>{
+
+}

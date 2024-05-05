@@ -12,6 +12,8 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import Link from 'next/link'
+import DeleteItem from '../delete/page'
+import EditItem from '../edit/page'
 
 const DataSheet = async () => {
   const session = await auth()
@@ -89,20 +91,8 @@ const DataSheet = async () => {
                 {record.amount.toFixed(2)}
               </TableCell>
               <TableCell className='flex justify-center items-center gap-6 '>
-                <Link href={`/dashboard/delete/${record._id}`} >
-                  <X
-                    size={32}
-                    color='#f40606'
-                    className='hover:scale-[120%] transition'
-                  />
-                </Link>
-                <Link href={`/dashboard/edit/${record._id}`} >
-                  <Pencil
-                    size={32}
-                    color='#068df4'
-                    className='hover:scale-[120%] transition'
-                  />
-                </Link>
+                <DeleteItem _id ={record._id}/>
+                <EditItem _id ={record._id}/>
               </TableCell>
             </TableRow>
           ))}
