@@ -78,8 +78,8 @@ const DataSheet = async () => {
         </TableHeader>
         <TableBody>
           {records.map((record) => (
-            <TableRow key={record._id}>
-              <TableCell className='font-medium'>
+            <TableRow key={record._id} className={`font-medium ${record.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>
+              <TableCell className={`font-medium `}>
                 {record.createdAt.toLocaleDateString()}
               </TableCell>
               <TableCell className='font-medium'>
@@ -91,8 +91,8 @@ const DataSheet = async () => {
                 {record.amount.toFixed(2)}
               </TableCell>
               <TableCell className='flex justify-center items-center gap-6 '>
-                <DeleteItem _id ={record._id}/>
-                <EditItem _id ={record._id}/>
+                <DeleteItem _id ={record._id.toString()}/>
+                <EditItem _id ={record._id.toString()}/>
               </TableCell>
             </TableRow>
           ))}

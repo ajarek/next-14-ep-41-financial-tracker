@@ -7,7 +7,6 @@ import bcrypt from 'bcryptjs'
 import { auth } from '@/app/api/auth/auth'
 
 export const addUser = async (formData: User) => {
-  
   const { username, email, password, img, isAdmin } = formData
   const hashedPassword = await bcrypt.hash(password, 5)
   try {
@@ -34,26 +33,31 @@ export const createRecord = async (formData: FormData) => {
     amount: formData.get('amount'),
     category: formData.get('category'),
     payment: formData.get('payment'),
-    userId: session?.user?.email
+    userId: session?.user?.email,
   }
-  
-  
-  
+
   try {
     await connectToDb()
     const newRecord = new Record(rawFormData)
-    console.log(newRecord)
     await newRecord.save()
     console.log('saved' + newRecord)
     revalidatePath('/dashboard')
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
 
-export const deleteItem=(formData: FormData)=>{
+export const deleteItem = async (formData: FormData) => {
+  const id = formData.get('_id')
 
+  try {
+    await connectToDb()
+    await Record.findOneAndDelete({ _id: id })
+    revalidatePath('/dashboard')
+    console.log({ message: `Deleted record ${id}` })
+    return { message: `Deleted record ${id}` }
+  } catch (err) {
+    return { message: 'Failed to delete record' }
+  }
 }
-export const editItem=(formData: FormData)=>{
-
-}
+export const editItem = (formData: FormData) => {}
