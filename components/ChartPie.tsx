@@ -1,11 +1,13 @@
 "use client"
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 
 const COLORS = ['green', 'red'];
 
 const renderActiveShape = (props: any) => {
+
+
   const RADIAN = Math.PI / 180;
  
   const {
@@ -81,6 +83,10 @@ const renderActiveShape = (props: any) => {
 
 export default function ChartPie({data}: any) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [domLoaded, setDomLoaded] = useState(false);
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
   const onPieEnter = useCallback(
     (_: any, index: number) => {
       setActiveIndex(index);
@@ -89,6 +95,8 @@ export default function ChartPie({data}: any) {
   );
 
   return (
+    <>
+     {domLoaded && (
     <PieChart width={400} height={400}>
       <Pie
         activeIndex={activeIndex}
@@ -108,5 +116,7 @@ export default function ChartPie({data}: any) {
             </Pie>
        
     </PieChart>
+      )}
+    </>
   );
 }

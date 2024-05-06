@@ -1,6 +1,6 @@
 import connectToDb from '@/lib/connectToDb'
 import { Record } from '@/lib/models'
-import { TrendingUp, TrendingDown, Wallet, X, Pencil} from 'lucide-react'
+import { TrendingUp, TrendingDown, Wallet, Pencil } from 'lucide-react'
 import { auth } from '@/app/api/auth/auth'
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/table'
 import Link from 'next/link'
 import DeleteItem from '../delete/page'
-import EditItem from '../edit/page'
+
 
 const DataSheet = async () => {
   const session = await auth()
@@ -78,7 +78,12 @@ const DataSheet = async () => {
         </TableHeader>
         <TableBody>
           {records.map((record) => (
-            <TableRow key={record._id} className={`font-medium ${record.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>
+            <TableRow
+              key={record._id}
+              className={`font-medium ${
+                record.amount < 0 ? 'text-red-500' : 'text-green-500'
+              }`}
+            >
               <TableCell className={`font-medium `}>
                 {record.createdAt.toLocaleDateString()}
               </TableCell>
@@ -91,8 +96,16 @@ const DataSheet = async () => {
                 {record.amount.toFixed(2)}
               </TableCell>
               <TableCell className='flex justify-center items-center gap-6 '>
-                <DeleteItem _id ={record._id.toString()}/>
-                <EditItem _id ={record._id.toString()}/>
+                <DeleteItem _id={record._id.toString()} />
+                <Link
+                  className='text-2xl mr-4'
+                  href={`/dashboard/edit/${record._id}?description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
+                >
+                  <Pencil
+                    size={32}
+                    color='blue'
+                  />
+                </Link>
               </TableCell>
             </TableRow>
           ))}

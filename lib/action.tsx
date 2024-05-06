@@ -60,4 +60,4 @@ export const deleteItem = async (formData: FormData) => {
     return { message: 'Failed to delete record' }
   }
 }
-export const editItem = (formData: FormData) => {}
+export const updateRecord = (formData: FormData) => {}
