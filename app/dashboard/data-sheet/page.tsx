@@ -99,7 +99,7 @@ const DataSheet = async () => {
                 <DeleteItem _id={record._id.toString()} />
                 <Link
                   className='text-2xl mr-4'
-                  href={`/dashboard/edit/${record._id}?description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
+                  href={`/dashboard/edit?id=${record._id}&description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
                 >
                   <Pencil
                     size={32}
