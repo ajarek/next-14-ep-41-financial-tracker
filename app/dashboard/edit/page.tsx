@@ -23,6 +23,8 @@ const Update =  ({  searchParams }: { searchParams: { id: string, description: s
 const { id, description, amount, category, payment } = searchParams
   
   return (
+    <div className='min-h-[calc(100vh-64px)] w-full flex flex-col  justify-center items-center max-sm:justify-start  px-24 max-sm:px-4 gap-4 '>
+      <h1 className='text-xl font-semibold '>Edit and Update Record</h1>
     <form
     
     ref={ref}
@@ -32,7 +34,7 @@ const { id, description, amount, category, payment } = searchParams
     }}
      
   
-    className='w-full flex flex-col gap-4 '
+    className=' w-full flex flex-col gap-4 '
   >
     <input
         type='hidden'
@@ -50,7 +52,7 @@ const { id, description, amount, category, payment } = searchParams
       />
     </div>
     <div className='flex flex-col gap-4'>
-      <Label htmlFor='amount'>Amount:(expense with "-")</Label>
+      <Label htmlFor='amount'>Amount:(expense with &quot - &quot)</Label>
       <Input
         type='number'
         name='amount'
@@ -101,6 +103,7 @@ const { id, description, amount, category, payment } = searchParams
       Update Record
     </Button>
   </form>
+  </div>
   )
 }
 

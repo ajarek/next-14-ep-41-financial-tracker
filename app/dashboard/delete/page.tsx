@@ -17,7 +17,7 @@ export default function DeleteItem({ _id }: { _id: string }) {
         value={_id}
       />
 
-      <Button className='bg-transparent' type='submit'>
+      <Button className='bg-transparent hover:bg-background transition' type='submit'>
         <X
           size={32}
           color='#f40606'

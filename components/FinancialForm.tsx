@@ -16,6 +16,7 @@ import {
 const FinancialForm = () => {
   const ref = useRef<HTMLFormElement>(null)
   return (
+    <div className=' w-full flex flex-col  justify-center items-center max-sm:justify-start  gap-4 '>
     <form
       ref={ref}
       action={async (formData) => {
@@ -83,6 +84,7 @@ const FinancialForm = () => {
         Add Record
       </Button>
     </form>
+    </div>
   )
 }
 

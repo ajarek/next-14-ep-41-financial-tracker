@@ -23,8 +23,8 @@ const FinancialInfo = async () => {
     { name: 'Expense', value: expense * -1 },
   ]
   return (
-    <div>
-      <div className='w-full grid grid-cols-3 gap-2 place-items-center mb-4'>
+    <div className='h-full w-full flex flex-col gap-4 '>
+      <div className='w-full grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center mb-4'>
         <div className='flex gap-2 items-center'>
           <TrendingUp
             color='green'
@@ -57,7 +57,7 @@ const FinancialInfo = async () => {
         </div>
       </div>
       {records?.length > 0 ? (
-        <div className='w-full flex justify-center  '>
+        <div className=' w-full flex justify-center max-sm:items-start  '>
           <ChartPie data={data} />
         </div>
       ) : (

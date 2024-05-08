@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/sheet'
 
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const MobileNav = () => {
   const pathname = usePathname()
@@ -25,13 +26,17 @@ const MobileNav = () => {
       >
         <SheetHeader>
         <Link
-          href='/'
-          className='flex items-center gap-2 max-sm-gap-1'
-        >
-          <h1 className='font-semibold text-xl text-primary   '>
-            HOTEL KOLBERG
-          </h1>
-        </Link>
+        href='/dashboard'
+        className='flex items-center gap-2 max-sm-gap-1'
+      >
+        <Image
+          src='/images/logo.png'
+          width={40}
+          height={40}
+          alt='logo'
+        />
+        <h1 className='font-semibold text-xl text-primary   '>FT</h1>
+      </Link>
         </SheetHeader>
         <SheetClose asChild>
           <div className='flex h-full flex-col gap-6 pt-16 '>
@@ -47,22 +52,22 @@ const MobileNav = () => {
           </SheetClose>
           <SheetClose asChild>
             <Link
-              href='/rooms'
+              href='dashboard/analyzes'
               className={`flex items-center gap-4 hover:bg-primary hover:text-primary-foreground hover:rounded-sm  rounded-sm px-4 py-2 transition ${
-                pathname === '/rooms' ? 'active ' : 'px-4'
+                pathname === '/analyzes' ? 'active ' : 'px-4'
               }`}
             >
-              Rooms
+              Analyzes
             </Link>
             </SheetClose>
             <SheetClose asChild>
             <Link
-              href='/contact'
+              href='/dashboard/data-sheet'
               className={`flex items-center gap-4 hover:bg-primary hover:text-primary-foreground hover:rounded-sm  rounded-sm px-4 py-2 transition ${
-                pathname === '/contact' ? 'active ' : 'px-4'
+                pathname === '/data-sheet' ? 'active ' : 'px-4'
               }`}
             >
-              Contact
+              Data Sheet
             </Link>
             </SheetClose>
           </div>

@@ -30,12 +30,12 @@ const DataSheet = async () => {
     .filter((record) => record.amount < 0)
     .reduce((acc, record) => acc + record.amount, 0)
   return (
-    <div>
-      <div className='w-full grid grid-cols-3 gap-2 place-items-center mb-4'>
+    <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-24 py-4 max-lg:px-0 gap-4  '>
+      <div className='w-full grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center mb-4'>
         <div className='flex gap-2 items-center'>
           <TrendingUp
             color='green'
-            size={32}
+            size={24}
           />
           <div className='flex flex-col gap-1'>
             <p className='text-sm'>Income:</p>{' '}
@@ -45,7 +45,7 @@ const DataSheet = async () => {
         <div className='flex gap-2 items-center'>
           <TrendingDown
             color='red'
-            size={32}
+            size={24}
           />
           <div className='flex flex-col gap-1'>
             <p className='text-sm'>Expense:</p>{' '}
@@ -70,8 +70,8 @@ const DataSheet = async () => {
           <TableRow>
             <TableHead className=''>Date</TableHead>
             <TableHead>Description</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Payment</TableHead>
+            <TableHead className='max-sm:hidden'>Category</TableHead>
+            <TableHead className='max-sm:hidden'>Payment</TableHead>
             <TableHead className='text-right'>Amount</TableHead>
             <TableHead className='text-center'>Action</TableHead>
           </TableRow>
@@ -90,15 +90,15 @@ const DataSheet = async () => {
               <TableCell className='font-medium'>
                 {record.description}
               </TableCell>
-              <TableCell className='font-medium'>{record.category}</TableCell>
-              <TableCell className='font-medium'>{record.payment}</TableCell>
+              <TableCell className='font-medium max-sm:hidden'>{record.category}</TableCell>
+              <TableCell className='font-medium max-sm:hidden'>{record.payment}</TableCell>
               <TableCell className='text-right font-medium'>
                 {record.amount.toFixed(2)}
               </TableCell>
-              <TableCell className='flex justify-center items-center gap-6 '>
+              <TableCell className='grid grid-cols-2 max-lg:grid-cols-1 gap-4 max-lg:gap-2 place-items-center '>
                 <DeleteItem _id={record._id.toString()} />
                 <Link
-                  className='text-2xl mr-4'
+                  className='text-2xl py-1 px-4 hover:bg-background rounded-sm'
                   href={`/dashboard/edit?id=${record._id}&description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
                 >
                   <Pencil
