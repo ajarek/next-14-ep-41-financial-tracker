@@ -36,7 +36,7 @@ export default function ChartBar({data}:any) {
      <Tooltip />
      <Legend />
      <CartesianGrid strokeDasharray="3 3" />
-     <Bar dataKey="Category" fill="green" background={{ fill: "#eee" }} />
+     <Bar dataKey="Category" fill="#00C49F" background={{ fill: "#eee" }} />
    </BarChart>
     )}
     </>

@@ -42,12 +42,12 @@ const MobileNav = () => {
           <div className='flex h-full flex-col gap-6 pt-16 '>
           <SheetClose asChild>
             <Link
-              href='/'
+              href='/dashboard'
               className={`flex items-center gap-4 hover:bg-primary hover:text-primary-foreground hover:rounded-sm  rounded-sm px-4 py-1 transition ${
                 pathname === '/' ? 'active ' : 'px-4'
               }`}
             >
-              Home
+              Dashboard
             </Link>
           </SheetClose>
           <SheetClose asChild>

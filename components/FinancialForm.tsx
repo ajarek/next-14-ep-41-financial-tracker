@@ -72,7 +72,7 @@ const FinancialForm = () => {
           <SelectContent>
             <SelectItem value='Credit Card'>Credit Card</SelectItem>
             <SelectItem value='Cash'>Cash</SelectItem>
-            <SelectItem value='Salary'>Salary</SelectItem>
+            <SelectItem value='Installment'>Installment</SelectItem>
             <SelectItem value='Bank Transfer'>Bank Transfer</SelectItem>
           </SelectContent>
         </Select>
