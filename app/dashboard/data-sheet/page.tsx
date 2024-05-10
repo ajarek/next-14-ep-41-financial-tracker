@@ -22,6 +22,7 @@ const DataSheet = async () => {
   const records = (await Record.find({ userId: email || '' }).sort({
     _id: -1,
   })) as Record[]
+  console.log(typeof(records[0]._id))
   const balance = records.reduce((acc, record) => acc + record.amount, 0)
   const income = records
     .filter((record) => record.amount > 0)
@@ -96,7 +97,7 @@ const DataSheet = async () => {
                 {record.amount.toFixed(2)}
               </TableCell>
               <TableCell className='grid grid-cols-2 max-lg:grid-cols-1 gap-4 max-lg:gap-2 place-items-center '>
-                <DeleteRecord _id={record._id} />
+                <DeleteRecord _id={String(record._id)} />
                 <Link
                   className='text-2xl py-1 px-4 hover:bg-background rounded-sm'
                   href={`/dashboard/edit?id=${record._id}&description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
