@@ -18,7 +18,7 @@ import { useRef } from 'react'
 
 
 
-const Update =  ({  searchParams }: { searchParams: { id: string, description: string, amount: number, category: string, payment: string }}) => {
+const Update =  ({  searchParams }: { searchParams: { id: string|number, description: string, amount: number, category: string, payment: string }}) => {
   const ref = useRef<HTMLFormElement>(null)
 const { id, description, amount, category, payment } = searchParams
   
