@@ -3,32 +3,35 @@
 import { Button } from '@/components/ui/button'
 import { deleteItem } from '@/lib/action'
 import { X } from 'lucide-react'
+
 type PropsDeleteRecord = {
   _id: string
 }
 
-const DeleteRecord=({ _id }: PropsDeleteRecord)=> {
+export default function DeleteRecord({ _id }: PropsDeleteRecord) {
   return (
     <>
-    <form
-      action={async (formData) => {
-        const res = await deleteItem(formData)
-      }}
-    >
-      <input
-        type='hidden'
-        name='_id'
-        value={_id}
-      />
-
-      <Button className='bg-transparent hover:bg-background transition' type='submit'>
-        <X
-          size={32}
-          color='#f40606'
+      <form
+        action={async (formData) => {
+          const res = await deleteItem(formData)
+        }}
+      >
+        <input
+          type='hidden'
+          name='_id'
+          value={_id}
         />
-      </Button>
-    </form>
+
+        <Button
+          className='bg-transparent hover:bg-background transition'
+          type='submit'
+        >
+          <X
+            size={32}
+            color='#f40606'
+          />
+        </Button>
+      </form>
     </>
   )
 }
-export default DeleteRecord
