@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button'
 import { deleteItem } from '@/lib/action'
 import { X } from 'lucide-react'
 
-export  function DeleteRecord({ _id }: { _id: string }) {
+const DeleteRecord=({ _id }: { _id: string })=> {
   return (
+    <>
     <form
       action={async (formData) => {
         const res = await deleteItem(formData)
@@ -24,5 +25,7 @@ export  function DeleteRecord({ _id }: { _id: string }) {
         />
       </Button>
     </form>
+    </>
   )
 }
+export default DeleteRecord
