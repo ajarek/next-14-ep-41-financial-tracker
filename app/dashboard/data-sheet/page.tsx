@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import Link from 'next/link'
-import {DeleteItem} from '../delete/page'
+import {DeleteRecord} from '../delete/page'
 
 
 const DataSheet = async () => {
@@ -96,7 +96,7 @@ const DataSheet = async () => {
                 {record.amount.toFixed(2)}
               </TableCell>
               <TableCell className='grid grid-cols-2 max-lg:grid-cols-1 gap-4 max-lg:gap-2 place-items-center '>
-                <DeleteItem _id={record._id} />
+                <DeleteRecord _id={record._id} />
                 <Link
                   className='text-2xl py-1 px-4 hover:bg-background rounded-sm'
                   href={`/dashboard/edit?id=${record._id}&description=${record.description}&amount=${record.amount}&category=${record.category}&payment=${record.payment}`}
