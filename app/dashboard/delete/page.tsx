@@ -3,8 +3,11 @@
 import { Button } from '@/components/ui/button'
 import { deleteItem } from '@/lib/action'
 import { X } from 'lucide-react'
+type PropsDeleteRecord = {
+  _id: string
+}
 
-const DeleteRecord=({ _id }: { _id: string })=> {
+const DeleteRecord=({ _id }: PropsDeleteRecord)=> {
   return (
     <>
     <form
