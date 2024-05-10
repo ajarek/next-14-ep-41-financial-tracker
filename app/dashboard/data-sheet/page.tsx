@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import Link from 'next/link'
-import DeleteItem from '../delete/page'
+import {DeleteItem} from '../delete/page'
 
 
 const DataSheet = async () => {

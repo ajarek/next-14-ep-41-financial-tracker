@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { deleteItem } from '@/lib/action'
 import { X } from 'lucide-react'
 
-export default function DeleteItem({ _id }: { _id: number|string }) {
+export  function DeleteItem({ _id }: { _id: number|string }) {
   return (
     <form
       action={async (formData) => {
