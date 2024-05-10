@@ -35,7 +35,7 @@ const FinancialForm = () => {
         />
       </div>
       <div className='flex flex-col gap-4'>
-        <Label htmlFor='amount'>Amount:(expense with "-")</Label>
+        <Label htmlFor='amount'>Amount:(expense with &#34 - &#34 )</Label>
         <Input
           type='number'
           name='amount'
