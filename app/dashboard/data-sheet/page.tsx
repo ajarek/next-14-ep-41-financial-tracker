@@ -12,8 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import Link from 'next/link'
-import {DeleteRecord} from '../delete-record/page'
-
+import { DeleteRecord } from '@/components/DeleteRecord'
 
 const DataSheet = async () => {
   const session = await auth()
@@ -22,14 +21,15 @@ const DataSheet = async () => {
   const records = (await Record.find({ userId: email || '' }).sort({
     _id: -1,
   })) as Record[]
-  console.log(typeof(records[0]._id))
+
   const balance = records.reduce((acc, record) => acc + record.amount, 0)
   const income = records
     .filter((record) => record.amount > 0)
     .reduce((acc, record) => acc + record.amount, 0)
   const expense = records
     .filter((record) => record.amount < 0)
-    .reduce((acc, record) => acc + record.amount, 0)
+    .reduce((acc, record) => acc + record.amount, 0) 
+    
   return (
     <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-24 py-4 max-lg:px-0 gap-4  '>
       <div className='w-full grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 place-items-center mb-4'>
@@ -91,8 +91,12 @@ const DataSheet = async () => {
               <TableCell className='font-medium'>
                 {record.description}
               </TableCell>
-              <TableCell className='font-medium max-sm:hidden'>{record.category}</TableCell>
-              <TableCell className='font-medium max-sm:hidden'>{record.payment}</TableCell>
+              <TableCell className='font-medium max-sm:hidden'>
+                {record.category}
+              </TableCell>
+              <TableCell className='font-medium max-sm:hidden'>
+                {record.payment}
+              </TableCell>
               <TableCell className='text-right font-medium'>
                 {record.amount.toFixed(2)}
               </TableCell>

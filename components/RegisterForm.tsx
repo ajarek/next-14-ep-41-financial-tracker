@@ -88,7 +88,10 @@ const RegisterForm = () => {
         >
           Register
         </Button>
-        <Link href='/api/auth/signin' className='text-white'>
+        <Link
+          href='/api/auth/signin'
+          className='text-white'
+        >
           Have an account? <b className='text-[#0E78F9]'>Login</b>
         </Link>
       </form>

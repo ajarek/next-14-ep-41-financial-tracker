@@ -4,9 +4,7 @@ import { Button } from '@/components/ui/button'
 import { deleteItem } from '@/lib/action'
 import { X } from 'lucide-react'
 
-
-
-export  function DeleteRecord({ _id }: { _id: string }) {
+export function DeleteRecord({ _id }: { _id: string }) {
   return (
     <>
       <form

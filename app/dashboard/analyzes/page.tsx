@@ -1,7 +1,6 @@
 import ChartBar from '@/components/ChartBar'
 import connectToDb from '@/lib/connectToDb'
 import { Record } from '@/lib/models'
-
 import { auth } from '@/app/api/auth/auth'
 import ChartPieProcent from '@/components/ChartPieProcent'
 
@@ -66,7 +65,8 @@ const Analyzes = async () => {
     { name: 'Cash', value: Math.abs(cash) },
     { name: 'Installment', value: Math.abs(installment) },
     { name: 'Bank Transfer', value: Math.abs(bank) },
-  ]
+  ] 
+  
   return (
     <div className='min-h-[calc(100vh-64px)] w-full grid grid-cols-2 max-lg:grid-cols-1 place-items-center '>
       <div className='h-full flex flex-col items-center justify-center   '>
@@ -74,7 +74,7 @@ const Analyzes = async () => {
         <ChartBar data={data} />
       </div>
       <div className='h-full flex flex-col items-center justify-center'>
-      <h1>Payment Type Analyzes</h1>
+        <h1>Payment Type Analyzes</h1>
         <ChartPieProcent data={dataProcent} />
       </div>
     </div>
